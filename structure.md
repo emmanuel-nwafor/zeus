@@ -1,43 +1,54 @@
-blumdate-admin/
-├── app/                              # Next.js App Router directory
-│   ├── (admin)/                     # Route group for admin routes
-│   │   ├── dashboard/               # Admin dashboard overview
-│   │   │   ├── page.js              # Dashboard UI (metrics, quick actions)
-│   │   │   └── layout.js            # Dashboard-specific layout
-│   │   ├── all-users/               # Manage all platform users
-│   │   │   ├── page.js              # List all users with actions (view, suspend)
-│   │   │   └── [userId]/            # Dynamic route for user details
-│   │   │       └── page.js          # User profile view/edit
-│   │   ├── suspended-users/         # Manage suspended users
-│   │   │   ├── page.js              # List suspended users with actions (unsuspend, delete)
-│   │   │   └── [userId]/            # Dynamic route for suspended user details
-│   │   │       └── page.js          # Suspended user profile view/edit
-│   │   ├── verification/            # Handle user verification
-│   │   │   ├── page.js              # List pending verifications with approve/reject
-│   │   │   └── [userId]/            # Dynamic route for verification details
-│   │   │       └── page.js          # Verification details and actions
-│   │   ├── layout.js                # Shared admin layout (sidebar, auth checks)
-│   │   └── loading.js               # Loading state for admin routes
-│   ├── api/                         # Route handlers for proxying API calls
-│   │   ├── users/route.js           # Proxy for user-related API calls (all, suspended)
-│   │   └── verification/route.js    # Proxy for verification-related API calls
-│   ├── _components/                 # Shared admin components
-│   │   ├── Sidebar.js               # Admin sidebar with navigation
-│   │   ├── UserTable.js             # Reusable table for user lists
-│   │   ├── VerificationCard.js      # Card for verification requests
-│   │   └── DashboardMetrics.js      # Dashboard metrics display
-│   ├── _hooks/                      # Custom hooks
-│   │   ├── useAuth.js               # Firebase admin auth management
-│   │   └── useApi.js                # API call wrapper (axios)
-│   ├── _lib/                        # Utility functions
-│   │   └── api.js                   # API call helpers
-│   ├── globals.css                  # Global Tailwind styles
-│   └── layout.js                    # Root layout (minimal)
-├── public/                          # Static assets
-│   ├── favicon.ico
-│   └── logo.png
-├── .env.local                       # Env vars (API_URL, Firebase config)
-├── next.config.js                   # Next.js config
-├── package.json                     # Dependencies and scripts
-├── tailwind.config.js               # Tailwind CSS config
-└── README.md                        # Project docs
+Flight Booking MVP Fullstack Project Structure (Complex)
+flight-booking-mvp/
+├── app/
+│   ├── api/
+│   │   ├── auth/
+│   │   │   ├── login/route.js        # API for user login
+│   │   │   ├── register/route.js     # API for user registration
+│   │   │   └── logout/route.js       # API for user logout
+│   │   ├── flights/
+│   │   │   └── route.js              # API to fetch flight data
+│   │   ├── seats/
+│   │   │   └── route.js              # API to fetch/update seat data
+│   │   ├── bookings/
+│   │   │   └── route.js              # API to create/view bookings
+│   │   └── payment/
+│   │       └── route.js              # API for mock payment processing
+│   ├── layout.js                     # Root layout for app-wide styling
+│   ├── page.js                       # Landing page with hero and search entry
+│   ├── search/
+│   │   └── page.js                   # Flight search form page
+│   ├── results/
+│   │   └── page.js                   # Flight results page
+│   ├── seat-selection/
+│   │   └── page.js                   # Seat selection page with react-seat-picker
+│   ├── booking/
+│   │   └── page.js                   # Booking confirmation page
+│   ├── profile/
+│   │   └── page.js                   # User profile with booking history
+│   ├── login/
+│   │   └── page.js                   # Login page
+│   ├── register/
+│   │   └── page.js                   # Registration page
+│   └── globals.css                   # Tailwind CSS global styles
+├── components/
+│   └── ui/
+│       ├── button.js                 # Aceternity UI Button component
+│       ├── card.js                   # Aceternity UI Card components
+│       ├── input.js                  # Aceternity UI Input component
+│       ├── select.js                 # Aceternity UI Select component
+│       ├── modal.js                  # Aceternity UI Modal for confirmations
+│       ├── navbar.js                 # Navigation bar component
+│       ├── footer.js                 # Footer component
+│       └── utils.js                  # Utility function for class names
+├── lib/
+│   ├── data.js                       # Mock data store (flights, seats, users, bookings)
+│   ├── auth.js                       # Auth utilities (e.g., JWT simulation)
+│   └── api.js                        # API client for frontend requests
+├── public/
+│   ├── favicon.ico                   # Placeholder favicon
+│   ├── logo.png                      # Logo for landing page and navbar
+│   └── plane.png                     # Image for landing page hero
+├── package.json                      # Project dependencies and scripts
+├── tailwind.config.js                # Tailwind CSS configuration
+└── next.config.js                    # Next.js configuration

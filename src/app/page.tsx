@@ -1,9 +1,10 @@
 import React from 'react'
+import Hero from './components/Hero'
 
 export default function page() {
   return (
-    <div>
-      Hello world this is a webapp that deals with flight booking etc
+    <div className='bg-black'>
+      <Hero />
     </div>
   )
 }
