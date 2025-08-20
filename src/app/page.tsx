@@ -4,7 +4,7 @@ import AdminPage from './admin/page'
 export default function page() {
   return (
     <div>
-      Hello world
+      Hello world this is a webapp that deals with flight booking etc
     </div>
   )
 }
