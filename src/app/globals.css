@@ -1,4 +1,5 @@
 @import "tailwindcss";
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap'); */
 
 @layer base {
   :root {
@@ -6,6 +7,9 @@
     --foreground: 222.2 47.4% 11.2%;
     --primary: 221.2 83.2% 53.3%;
     --primary-foreground: 210 40% 98%;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
   }
 }
 
@@ -20,13 +24,7 @@
     animation-delay: 600ms;
   }
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }
