@@ -12,7 +12,7 @@ export function HeroPage() {
 
         <NavbarDemo />
        
-        <div className="px-14 h-screen flex justify-start items-center sm:px-6 md:px-8 lg:px-12 relative">
+        <div className="h-screen flex justify-start items-center px-4 sm:px-6 md:px-8 lg:px-12 relative">
           <div className="relative z-10 text-left max-w-4xl sm:max-w-3xl opacity-0 animate-fade-in">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-neutral-800 dark:text-neutral-100 tracking-tight">
               Fly
