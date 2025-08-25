@@ -1,23 +1,30 @@
-// lib/db.js
-import mongoose from 'mongoose';
+import { MongoClient, ServerApiVersion } from "mongodb";
 
-let isConnected = false;
+if (!process.env.MONGO_URI) {
+  throw new Error("Please define the MONGO_URI environment variable inside .env.local");
+}
 
-export const connectToDB = async () => {
-  if (isConnected) {
-    console.log('MongoDB is already connected');
-    return;
+const client = new MongoClient(process.env.MONGO_URI, {
+    serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
   }
-
+});
+ 
+async function getDB(dbName) {
   try {
-    await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    isConnected = true;
-    console.log('MongoDB connected successfully');
-  } catch (error) {
-    console.error('MongoDB connection error:', error);
-    throw error; // Throw error to handle in API routes
+    await client.connect();
+    console.log("<===== Connected to MongoDB =====>");
+    return client.db(dbName);
+  } catch (err) {
+    console.log(err)
   }
-};
+}
+
+export async function getCollection(collectionName) {
+  const db = await getDB('zeus-airline');
+  if (db) return db.collection(collectionName);
+
+  return null;
+}
