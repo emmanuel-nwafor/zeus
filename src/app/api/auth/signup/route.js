@@ -1,4 +1,4 @@
-import { getCollection } from "/src/lib/db.js";
+import { getCollection } from "./lib/db.js";
 import bcrypt from "bcrypt";
 
 export default async function handler(req, res) {
