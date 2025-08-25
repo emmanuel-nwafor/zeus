@@ -1,4 +1,4 @@
-import { getCollection } from "./lib/db.js";
+import { getCollection } from "/src/lib/db.js";
 import bcrypt from "bcrypt";
 
 export default async function handler(req, res) {
@@ -7,7 +7,6 @@ export default async function handler(req, res) {
   }
 
   const { username, email, password } = req.body;
-
   // Server-side validation
   if (!username || !email || !password) {
     return res.status(400).json({ message: "All fields are required" });
