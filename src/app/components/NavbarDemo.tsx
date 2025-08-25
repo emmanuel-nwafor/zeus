@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import {
   Navbar,
   NavBody,
@@ -37,9 +38,11 @@ export function NavbarDemo() {
         <NavBody>
           <NavbarLogo />
           <NavItems items={navItems} />
-          <div className="flex items-center gap-4">
-            <NavbarButton variant="secondary">Login</NavbarButton>
-            <NavbarButton variant="primary">Book a call</NavbarButton>
+          <div className="flex text-black dark:text-white items-center gap-4">
+            <NavbarButton variant="secondary">
+              <Link href="/auth/login" className="text-white">Login</Link>
+            </NavbarButton>
+            <NavbarButton variant="primary">Book a seat</NavbarButton>
           </div>
         </NavBody>
 
@@ -62,7 +65,7 @@ export function NavbarDemo() {
                 key={`mobile-link-${idx}`}
                 href={item.link}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600 dark:text-neutral-300"
+                className="relative text-white"
               >
                 <span className="block">{item.name}</span>
               </a>

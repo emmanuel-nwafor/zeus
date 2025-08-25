@@ -1,43 +1,52 @@
+"use client"; // Add this to ensure client-side rendering
+
 import { AnimatedTestimonials } from "./ui/animated-testimonials";
 
 const AnimatedTestimonialsDemo = () => {
   const testimonials = [
     {
       quote:
-        "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
-      name: "Sarah Chen",
-      designation: "Product Manager at TechFlow",
-      src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "Flying with Zeus Airline was a game-changer! The booking process was seamless, and the in-flight service was top-notch. I felt like a VIP from start to finish.",
+      name: "Mike Newman",
+      designation: "Travel Blogger",
+      src: "https://i.pinimg.com/1200x/80/ae/13/80ae13be55fbc3b7d9e9a7840562e944.jpg",
+      alt: "Zeus Airline Passenger in Airport",
     },
     {
       quote:
-        "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
-      name: "Michael Rodriguez",
-      designation: "CTO at InnovateSphere",
-      src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "Zeus Airline’s affordable fares and modern fleet made my trip unforgettable. The crew’s attention to detail was beyond my expectations.",
+      name: "Maggie Daniels",
+      designation: "Business Consultant",
+      src: "https://i.pinimg.com/736x/7e/bd/91/7ebd911eb9396886072487acf5028230.jpg",
+      alt: "Zeus Airline Passenger on Plane",
     },
     {
       quote:
-        "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
-      name: "Emily Watson",
-      designation: "Operations Director at CloudScale",
-      src: "https://images.unsplash.com/photo-1623582854588-d60de57fa33f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "The smoothest flight I’ve ever taken! Zeus Airline’s intuitive app and comfortable seats made traveling a breeze. Highly recommend!",
+      name: "Daniel Nwosu",
+      designation: "Marketing Manager",
+      src: "https://i.pinimg.com/736x/41/4d/d5/414dd56201b6a77b35f5b4440e7bb813.jpg",
+      alt: "Zeus Airline Passenger at Gate",
     },
     {
       quote:
-        "Outstanding support and robust features. It's rare to find a product that delivers on all its promises.",
-      name: "James Kim",
-      designation: "Engineering Lead at DataPro",
-      src: "https://images.unsplash.com/photo-1636041293178-808a6762ab39?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "Zeus Airline delivered exceptional service and unbeatable prices. Their eco-friendly initiatives made me proud to fly with them.",
+      name: "James Adeyemi",
+      designation: "Environmental Researcher",
+      src: "https://i.pinimg.com/1200x/3e/f3/50/3ef350dc86cc82a092463e5d795654b5.jpg",
+      alt: "Zeus Airline Passenger on Board",
     },
     {
       quote:
-        "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
-      name: "Lisa Thompson",
-      designation: "VP of Technology at FutureNet",
-      src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "From check-in to landing, Zeus Airline made my family’s vacation stress-free. The loyalty program perks are a fantastic bonus!",
+      name: "Tunde Ibrahim",
+      designation: "Family Travel Planner",
+      src: "https://i.pinimg.com/736x/0d/81/29/0d8129117fc06f0c440d64758b7d7655.jpg",
+      alt: "Zeus Airline Family at Airport",
     },
   ];
+
   return <AnimatedTestimonials testimonials={testimonials} />;
-}
-export default AnimatedTestimonialsDemo;    
+};
+
+export default AnimatedTestimonialsDemo;
