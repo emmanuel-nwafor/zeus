@@ -1,45 +1,54 @@
-import { getCollection } from "./lib/db.js";
+import { getCollection } from "@/lib/db.js";
 import bcrypt from "bcrypt";
+import { NextResponse } from "next/server";
 
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method not allowed" });
-  }
-
-  const { username, email, password } = req.body;
-  // Server-side validation
-  if (!username || !email || !password) {
-    return res.status(400).json({ message: "All fields are required" });
-  }
-
-  if (!/\S+@\S+\.\S+/.test(email)) {
-    return res.status(400).json({ message: "Invalid email format" });
-  }
-
+export async function POST(req) {
   try {
-    const usersCollection = await getCollection("users");
+    console.log("Received signup request");
+    const { username, email, password } = await req.json();
+    console.log("Request body:", { username, email, password });
 
-    // Check if email already exists
-    const existingUser = await usersCollection.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ message: "Email already exists" });
+    // Server-side validation
+    if (!username || !email || !password) {
+      console.log("Validation failed: Missing fields");
+      return NextResponse.json({ message: "All fields are required" }, { status: 400 });
     }
 
-    // Hash password
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      console.log("Validation failed: Invalid email format");
+      return NextResponse.json({ message: "Invalid email format" }, { status: 400 });
+    }
+
+    console.log("Connecting to MongoDB...");
+    const usersCollection = await getCollection("users");
+    if (!usersCollection) {
+      console.error("Failed to get users collection");
+      return NextResponse.json({ message: "Database connection failed" }, { status: 500 });
+    }
+
+    console.log("Checking for existing user...");
+    const existingUser = await usersCollection.findOne({ email });
+    if (existingUser) {
+      console.log("User already exists:", email);
+      return NextResponse.json({ message: "Email already exists" }, { status: 400 });
+    }
+
+    console.log("Hashing password...");
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    // Insert new user
-    const result = await usersCollection.insertOne({
+    console.log("Inserting new user...");
+    await usersCollection.insertOne({
       username,
       email,
       password: hashedPassword,
       createdAt: new Date(),
     });
 
-    return res.status(201).json({ message: "User created successfully" });
+    console.log("User created successfully:", email);
+    return NextResponse.json({ message: "User created successfully" }, { status: 201 });
   } catch (error) {
-    console.error("Signup error:", error);
-    return res.status(500).json({ message: "Internal server error" });
+    console.error("Signup error:", error.message, error.stack);
+    return NextResponse.json({ message: "Internal server error", error: error.message }, { status: 500 });
   }
 }

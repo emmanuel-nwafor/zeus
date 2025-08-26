@@ -1,30 +1,47 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 
+// Singleton MongoClient instance
+let client;
+let clientPromise;
+
 if (!process.env.MONGO_URI) {
-  throw new Error("Please define the MONGO_URI environment variable inside .env.local");
+  throw new Error("MONGO_URI is not defined in .env.local");
 }
 
-const client = new MongoClient(process.env.MONGO_URI, {
+console.log("Loading MONGO_URI:", process.env.MONGO_URI); // Debug log
+
+// Initialize MongoClient only once
+if (!client) {
+  client = new MongoClient(process.env.MONGO_URI, {
     serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
- 
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    },
+  });
+  clientPromise = client.connect().catch(err => {
+    console.error("MongoDB initial connection error:", err.message, err.stack);
+    throw err;
+  });
+}
+
 async function getDB(dbName) {
   try {
-    await client.connect();
+    await clientPromise;
     console.log("<===== Connected to MongoDB =====>");
     return client.db(dbName);
   } catch (err) {
-    console.log(err)
+    console.error("MongoDB connection error:", err.message, err.stack);
+    throw err;
   }
 }
 
 export async function getCollection(collectionName) {
-  const db = await getDB('zeus-airline');
-  if (db) return db.collection(collectionName);
-
-  return null;
+  try {
+    const db = await getDB("zeus-airline");
+    return db.collection(collectionName);
+  } catch (err) {
+    console.error("Error getting collection:", err.message, err.stack);
+    return null;
+  }
 }
