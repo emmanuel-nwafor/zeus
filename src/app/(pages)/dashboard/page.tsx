@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import SidebarDemo from "@/app/components/SidebarDemo";
+import { SidebarDemo } from '@/app/components/SidebarDemo'
 
 interface Flight {
   _id: string;
@@ -70,7 +70,7 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen text-white">
+    <div className="flex flex-col md:flex-row min-h-screenyy text-white">
       {/* Sidebar */}
       <div className="w-full md:w-1/5 lg:w-1/6">
         <SidebarDemo />
