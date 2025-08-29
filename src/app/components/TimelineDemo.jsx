@@ -7,14 +7,14 @@ const TimelineDemo = () => {
     {
       title: "Early 2023",
       content: (
-        <div>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+        <div className="">
+          <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
             Launched Zeus Airline with our first international routes and a state-of-the-art fleet, delivering unparalleled travel experiences.
           </p>
-          <p className="mb-4 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
             Partnered with top travel brands to offer exclusive vacation packages for Zeus Airline customers.
           </p>
-          <p className="mb-4 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="text-xs mb-10 font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
             Opened a state-of-the-art training academy for pilots and crew, ensuring world-class service standards.
           </p>
           <div className="grid grid-cols-2 gap-4">
@@ -57,10 +57,10 @@ const TimelineDemo = () => {
           <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
             Founded Zeus Airline with a vision to redefine air travel through innovation, affordability, and customer-first service.
           </p>
-          <p className="mb-8 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
             Introduced our eco-friendly fleet and launched domestic routes, earning recognition for safety and comfort.
           </p>
-          <p className="mb-4 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="mb-10 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200">
             Unveiled the Zeus Sky Lounge, offering exclusive amenities at major airports for premium passengers.
           </p>
           <div className="grid grid-cols-2 gap-4">
