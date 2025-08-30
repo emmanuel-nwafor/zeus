@@ -4,33 +4,37 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { useMotionTemplate, useMotionValue, motion } from "motion/react";
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  // Extend with any additional props if needed, e.g., custom styles
+  // For now, keep it minimal to avoid empty interface warning
+}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {
-    const radius = 100; // change this to increase the rdaius of the hover effect
+    const radius = 100; // change this to increase the radius of the hover effect
     const [visible, setVisible] = React.useState(false);
 
-    let mouseX = useMotionValue(0);
-    let mouseY = useMotionValue(0);
+    const mouseX = useMotionValue(0); // Use const since it's not reassigned
+    const mouseY = useMotionValue(0); // Use const since it's not reassigned
 
-    function handleMouseMove({ currentTarget, clientX, clientY }: any) {
-      let { left, top } = currentTarget.getBoundingClientRect();
-
-      mouseX.set(clientX - left);
-      mouseY.set(clientY - top);
+    function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent<HTMLInputElement>) {
+      const { left, top } = currentTarget.getBoundingClientRect();
+      const newLeft = clientX - left; // Use const for reassigned values
+      const newTop = clientY - top;  // Use const for reassigned values
+      mouseX.set(newLeft);
+      mouseY.set(newTop);
     }
+
     return (
       <motion.div
         style={{
           background: useMotionTemplate`
-        radial-gradient(
-          ${visible ? radius + "px" : "0px"} circle at ${mouseX}px ${mouseY}px,
-          #3b82f6,
-          transparent 80%
-        )
-      `,
+            radial-gradient(
+              ${visible ? radius + "px" : "0px"} circle at ${mouseX}px ${mouseY}px,
+              #3b82f6,
+              transparent 80%
+            )
+          `,
         }}
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setVisible(true)}

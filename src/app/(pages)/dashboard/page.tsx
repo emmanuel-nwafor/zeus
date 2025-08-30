@@ -12,12 +12,12 @@ interface Flight {
   price: number;
 }
 
-interface Booking {
-  flightId: string;
-  name: string;
-  email: string;
-  seat: string;
-}
+// interface Booking {
+//   flightId: string;
+//   name: string;
+//   email: string;
+//   seat: string;
+// }
 
 export default function DashboardPage() {
   const [flights, setFlights] = useState<Flight[]>([]);

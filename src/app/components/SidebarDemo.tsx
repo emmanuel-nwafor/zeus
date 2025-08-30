@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "./ui/sidebar";
+import Image from "next/image";
 import {
   IconArrowLeft,
   IconBrandTabler,
@@ -62,10 +63,10 @@ export function SidebarDemo() {
           <div>
             <SidebarLink
               link={{
-                label: "Manu Arora",
+                label: "zeus-airline",
                 href: "#",
                 icon: (
-                  <img
+                  <Image
                     src="https://assets.aceternity.com/manu.png"
                     className="h-7 w-7 shrink-0 rounded-full"
                     width={50}
