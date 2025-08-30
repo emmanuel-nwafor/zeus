@@ -4,26 +4,38 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { useMotionTemplate, useMotionValue, motion } from "motion/react";
 
+// Add a custom prop to give the interface a purpose
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  // Extend with any additional props if needed, e.g., custom styles
-  // For now, keep it minimal to avoid empty interface warning
+  customStyle?: string; // Optional custom style prop
+  onFocusChange?: (focused: boolean) => void; // Example functional prop
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
-    const radius = 100; // change this to increase the radius of the hover effect
+  ({ className, type, customStyle, onFocusChange, ...props }, ref) => {
+    const radius = 100; // Change this to increase the radius of the hover effect
     const [visible, setVisible] = React.useState(false);
+    const [isFocused, setIsFocused] = React.useState(false);
 
     const mouseX = useMotionValue(0); // Use const since it's not reassigned
     const mouseY = useMotionValue(0); // Use const since it's not reassigned
 
     function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent<HTMLInputElement>) {
       const { left, top } = currentTarget.getBoundingClientRect();
-      const newLeft = clientX - left; // Use const for reassigned values
-      const newTop = clientY - top;  // Use const for reassigned values
+      const newLeft = clientX - left;
+      const newTop = clientY - top;
       mouseX.set(newLeft);
       mouseY.set(newTop);
     }
+
+    const handleFocus = () => {
+      setIsFocused(true);
+      if (onFocusChange) onFocusChange(true);
+    };
+
+    const handleBlur = () => {
+      setIsFocused(false);
+      if (onFocusChange) onFocusChange(false);
+    };
 
     return (
       <motion.div
@@ -31,7 +43,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           background: useMotionTemplate`
             radial-gradient(
               ${visible ? radius + "px" : "0px"} circle at ${mouseX}px ${mouseY}px,
-              #3b82f6,
+              ${isFocused ? "#3b82f6" : "#60a5fa"},
               transparent 80%
             )
           `,
@@ -39,7 +51,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setVisible(true)}
         onMouseLeave={() => setVisible(false)}
-        className="group/input rounded-lg p-[2px] transition duration-300"
+        className={cn("group/input rounded-lg p-[2px] transition duration-300", customStyle)}
       >
         <input
           type={type}
@@ -48,6 +60,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             className,
           )}
           ref={ref}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           {...props}
         />
       </motion.div>
