@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "rm -rf node_modules && rm -f package-lock.json && npm install && next build",
     "start": "next start",
     "lint": "next lint"
   },
