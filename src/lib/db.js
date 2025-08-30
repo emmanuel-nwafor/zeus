@@ -6,7 +6,7 @@ let clientPromise;
 
 const uri = process.env.MONGO_URI;
 if (!uri) {
-  throw new Error("MONGO_URI is not defined"); // Remove .env.local reference
+  throw new Error("MONGO_URI is not defined"); // No .env.local reference
 }
 
 console.log("Loading MONGO_URI:", process.env.MONGO_URI); // Debug log
