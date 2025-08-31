@@ -76,7 +76,7 @@ export function NavbarDemo() {
                 variant="primary"
                 className="w-full"
               >
-                Login
+                <Link href="/auth/login" className="text-white">Login</Link>
               </NavbarButton>
               <NavbarButton
                 onClick={() => setIsMobileMenuOpen(false)}
