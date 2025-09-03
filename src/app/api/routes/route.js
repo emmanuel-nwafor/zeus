@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import Flight from '../../../models/Flight';
-import connectDB from '../../../lib/db';
+import Flight from '@/models/Flight';
+import connectDB from '@/lib/db';
 
 export async function GET(request) {
   try {
