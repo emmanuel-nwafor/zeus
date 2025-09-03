@@ -86,7 +86,7 @@ export const DesktopSidebar = ({
     <>
       <motion.div
         className={cn(
-          "h-full px-4 py-4 hidden md:flex md:flex-col bg-neutral-800 dark:bg-neutral-900 w-[300px] shrink-0",
+          "h-full py-4 hidden md:block md:flex md:flex-col bg-neutral-800 dark:bg-neutral-900 w-[300px] shrink-0",
           className
         )}
         animate={{

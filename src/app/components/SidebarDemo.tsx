@@ -4,6 +4,8 @@ import { Sidebar, SidebarBody, SidebarLink } from "./ui/sidebar";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Home, BookOpen, Settings, LogOut, SearchIcon } from "lucide-react";
+import Search from "../(pages)/search/page";
+import { BentoGridDemo } from "./BentoGridDemo";
 
 export function SidebarDemo() {
   const links = [
@@ -81,6 +83,7 @@ export function SidebarDemo() {
           </div>
         </SidebarBody>
       </Sidebar>
+      {/* <BentoGridDemo /> */}
     </div>
   );
 }
@@ -89,7 +92,7 @@ export const Logo = () => {
   return (
     <a
       href="/"
-      className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-neutral-200 dark:text-white"
+      className="relative z-20 items-center space-x-2 px-4 text-sm font-normal text-neutral-200 dark:text-white"
     >
       <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-gradient-to-r from-blue-600 to-indigo-600" />
       <motion.span
@@ -107,9 +110,9 @@ export const LogoIcon = () => {
   return (
     <a
       href="/"
-      className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-neutral-200 dark:text-white"
+      className="relative z-20 flex items-center space-x-2 px-4 text-sm font-normal text-neutral-200 dark:text-white"
     >
       <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-gradient-to-r from-blue-600 to-indigo-600" />
     </a>
   );
-};
+}
