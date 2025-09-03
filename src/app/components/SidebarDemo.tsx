@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "./ui/sidebar";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 import { Home, BookOpen, Settings, LogOut, SearchIcon } from "lucide-react";
 import Search from "../(pages)/search/page";
 import { BentoGridDemo } from "./BentoGridDemo";

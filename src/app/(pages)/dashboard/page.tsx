@@ -4,7 +4,7 @@ import { Sidebar } from "@/app/components/Sidebar";
 import { ThemeToggle } from "@/app/components/ThemeToggle";
 import { Home, BookOpen, Settings, LogOut, Plane, Users, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { cn } from "../../../lib/utils";
 
 export default function DashboardPage() {
   const [isDarkMode, setIsDarkMode] = useState(false); // For theme toggle state

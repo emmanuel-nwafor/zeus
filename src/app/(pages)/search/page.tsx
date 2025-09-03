@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Sidebar } from "@/app/components/Sidebar";
 import { SearchIcon, Plane } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../../lib/utils";
 
 export default function SearchPage() {
   const [departure, setDeparture] = useState("");

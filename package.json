@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "rm -rf node_modules && rm -f package-lock.json && npm install && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "node scripts/seed.js",
+    "seed-flights": "node scripts/seed-flights.js"
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.7",
