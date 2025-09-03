@@ -1,7 +1,5 @@
-import React, { useRef, useState } from 'react';
-
 'use client';
-
+import React, { useRef, useState } from 'react';
 
 const defaultProfile = '/default-profile.png'; // Replace with your default image path
 
